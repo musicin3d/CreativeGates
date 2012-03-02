@@ -1,9 +1,10 @@
 package com.massivecraft.creativegates.zcore;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerCommandEvent;
-import org.bukkit.event.server.ServerListener;
 
-public class MPluginSecretServerListener extends ServerListener
+public class MPluginSecretServerListener implements Listener
 {
 	private MPlugin p;
 	public MPluginSecretServerListener(MPlugin p)
@@ -12,7 +13,7 @@ public class MPluginSecretServerListener extends ServerListener
 	}
 	
 	// This method is not perfect. It says unknown console command.
-	@Override
+	@EventHandler
 	public void onServerCommand(ServerCommandEvent event)
 	{
 		if (event.getCommand().length() == 0) return;

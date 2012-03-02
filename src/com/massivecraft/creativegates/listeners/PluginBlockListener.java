@@ -1,9 +1,10 @@
 package com.massivecraft.creativegates.listeners;
 
 import org.bukkit.block.Block;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
@@ -13,11 +14,11 @@ import com.massivecraft.creativegates.Gates;
 import com.massivecraft.creativegates.Permission;
 
 
-public class PluginBlockListener extends BlockListener
+public class PluginBlockListener implements Listener
 {
 	CreativeGates p = CreativeGates.p;
 	
-	@Override
+	@EventHandler
 	public void onBlockPistonExtend(BlockPistonExtendEvent event)
 	{
 		if (event.isCancelled())
@@ -36,6 +37,7 @@ public class PluginBlockListener extends BlockListener
 	}
 	
 	// The purpose is to stop the water from falling
+	@EventHandler
 	public void onBlockFromTo(BlockFromToEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -55,7 +57,7 @@ public class PluginBlockListener extends BlockListener
 	}
 	
 	// The gate content is invulnerable
-	@Override
+	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -68,7 +70,7 @@ public class PluginBlockListener extends BlockListener
 	}
 	
 	// Is the player allowed to destroy gates?
-	@Override
+	@EventHandler
 	public void onBlockBreak(BlockBreakEvent event)
 	{
 		if (event.isCancelled()) return;

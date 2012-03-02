@@ -1,6 +1,5 @@
 package com.massivecraft.creativegates;
 
-import org.bukkit.event.Event;
 
 import com.massivecraft.creativegates.listeners.*;
 import com.massivecraft.creativegates.zcore.*;
@@ -39,7 +38,7 @@ public class CreativeGates extends MPlugin
 		Gates.i.openAllOrDetach();
 		
 		// Register events
-		this.registerEvent(Event.Type.PLAYER_INTERACT, this.playerListener, Event.Priority.Normal);
+		/*this.registerEvent(Event.Type.PLAYER_INTERACT, this.playerListener, Event.Priority.Normal);
 		this.registerEvent(Event.Type.PLAYER_BUCKET_FILL, this.playerListener, Event.Priority.Normal);
 		this.registerEvent(Event.Type.PLAYER_BUCKET_EMPTY, this.playerListener, Event.Priority.Normal);
 		this.registerEvent(Event.Type.PLAYER_MOVE, this.playerListener, Event.Priority.Monitor);
@@ -49,7 +48,14 @@ public class CreativeGates extends MPlugin
 		this.registerEvent(Event.Type.BLOCK_BREAK, this.blockListener, Event.Priority.Normal);
 		this.registerEvent(Event.Type.BLOCK_BREAK, this.blockListenerMonitor, Event.Priority.Monitor);
 		this.registerEvent(Event.Type.ENTITY_EXPLODE, this.entityListener, Event.Priority.Normal);
-		this.registerEvent(Event.Type.CUSTOM_EVENT, this.gateListener, Event.Priority.Monitor);
+		this.registerEvent(Event.Type.CUSTOM_EVENT, this.gateListener, Event.Priority.Monitor);*/
+		getServer().getPluginManager().registerEvents(this.playerListener, this);
+		getServer().getPluginManager().registerEvents(this.blockListener, this);
+		getServer().getPluginManager().registerEvents(this.blockListenerMonitor, this);
+		getServer().getPluginManager().registerEvents(this.entityListener, this);
+		getServer().getPluginManager().registerEvents(this.gateListener, this);
+		// TODO: SkilletStudios: separate different level listeners into separate objects
+
 		
 		postEnable();
 	}

@@ -1,8 +1,9 @@
 package com.massivecraft.creativegates.zcore;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerPreLoginEvent;
 
 import com.massivecraft.creativegates.zcore.persist.EM;
@@ -10,7 +11,7 @@ import com.massivecraft.creativegates.zcore.persist.Entity;
 import com.massivecraft.creativegates.zcore.persist.EntityCollection;
 import com.massivecraft.creativegates.zcore.persist.PlayerEntityCollection;
 
-public class MPluginSecretPlayerListener extends PlayerListener
+public class MPluginSecretPlayerListener implements Listener
 {
 	private MPlugin p;
 	public MPluginSecretPlayerListener(MPlugin p)
@@ -18,7 +19,7 @@ public class MPluginSecretPlayerListener extends PlayerListener
 		this.p = p;
 	}
 	
-	@Override
+	@EventHandler
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -29,7 +30,7 @@ public class MPluginSecretPlayerListener extends PlayerListener
 		}
 	}
 	
-	@Override
+	@EventHandler
 	public void onPlayerChat(PlayerChatEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -40,7 +41,7 @@ public class MPluginSecretPlayerListener extends PlayerListener
 		}
 	}
 	
-	@Override
+	@EventHandler
 	public void onPlayerPreLogin(PlayerPreLoginEvent event)
 	{
 		for (EntityCollection<? extends Entity> ecoll : EM.class2Entities.values())

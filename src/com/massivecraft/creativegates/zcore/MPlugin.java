@@ -9,8 +9,6 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.Event;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -75,11 +73,13 @@ public abstract class MPlugin extends JavaPlugin
 		this.mPluginSecretPlayerListener = new MPluginSecretPlayerListener(this);
 		this.mPluginSecretServerListener = new MPluginSecretServerListener(this);
 		PluginManager pm = this.getServer().getPluginManager();
-		pm.registerEvent(Event.Type.PLAYER_PRELOGIN, this.mPluginSecretPlayerListener, Event.Priority.Lowest, this);
+		/*pm.registerEvent(Event.Type.PLAYER_PRELOGIN, this.mPluginSecretPlayerListener, Event.Priority.Lowest, this);
 		pm.registerEvent(Event.Type.PLAYER_CHAT, this.mPluginSecretPlayerListener, Event.Priority.Low, this);
 		pm.registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, this.mPluginSecretPlayerListener, Event.Priority.Lowest, this);
-		pm.registerEvent(Event.Type.SERVER_COMMAND, this.mPluginSecretServerListener, Event.Priority.Lowest, this);
-		
+		pm.registerEvent(Event.Type.SERVER_COMMAND, this.mPluginSecretServerListener, Event.Priority.Lowest, this);*/
+		pm.registerEvents(this.mPluginSecretPlayerListener, this);
+		pm.registerEvents(this.mPluginSecretServerListener, this);
+		// TODO: Skillet Studios: Address varying listener levels
 		
 		// Register recurring tasks
 		long saveTicks = 20 * 60 * 30; // Approximately every 30 min
@@ -113,14 +113,17 @@ public abstract class MPlugin extends JavaPlugin
 		this.getServer().getPluginManager().disablePlugin(this);
 	}
 
+	
+	// Removed by Skillet Studios
+	
 	// -------------------------------------------- //
 	// Register Event convenience method
 	// -------------------------------------------- //
 	
-	public void registerEvent(Event.Type type, Listener listener, Event.Priority priority)
+	/*public void registerEvent(Event.Type type, Listener listener, Event.Priority priority)
 	{
 		Bukkit.getServer().getPluginManager().registerEvent(type, listener, priority, this);	
-	}
+	}*/
 	
 	// -------------------------------------------- //
 	// Some inits...

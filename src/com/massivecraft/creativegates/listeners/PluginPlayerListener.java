@@ -6,11 +6,12 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.*;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.massivecraft.creativegates.Conf;
@@ -22,10 +23,11 @@ import com.massivecraft.creativegates.Permission;
 import com.massivecraft.creativegates.WorldCoord;
 import com.massivecraft.creativegates.event.CreativeGatesTeleportEvent;
 
-public class PluginPlayerListener extends PlayerListener
+public class PluginPlayerListener implements Listener
 {
 	CreativeGates p = CreativeGates.p;
 	
+	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -70,6 +72,7 @@ public class PluginPlayerListener extends PlayerListener
 		p.getServer().getPluginManager().callEvent(gateevent);
 	}
 	
+	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event)
 	{
 		if (event.isCancelled()) return;
@@ -101,7 +104,7 @@ public class PluginPlayerListener extends PlayerListener
 		}
 	}
 	
-	@Override
+	@EventHandler
 	public void onPlayerBucketFill(PlayerBucketFillEvent event)
 	{
 		if (event.isCancelled())
@@ -115,7 +118,7 @@ public class PluginPlayerListener extends PlayerListener
 		}
 	}
 	
-	@Override
+	@EventHandler
 	public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event)
 	{
 		if (event.isCancelled())

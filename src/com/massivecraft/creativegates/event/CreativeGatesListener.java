@@ -1,19 +1,20 @@
 package com.massivecraft.creativegates.event;
 
-import org.bukkit.event.CustomEventListener;
-import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
 
-public class CreativeGatesListener extends CustomEventListener
+public class CreativeGatesListener implements Listener
 {
-    @Override
-    public void onCustomEvent(Event event)
+	/*@EventHandler
+	public void onCustomEvent(Event event)
     {
         if(event instanceof CreativeGatesTeleportEvent)
         {
             onPlayerGateTeleport((CreativeGatesTeleportEvent) event);
         }
-    }
-    
+    }*/
+	
+	@EventHandler
     public void onPlayerGateTeleport(CreativeGatesTeleportEvent event) {}
 }

@@ -1,18 +1,38 @@
+
+// This file has been edited by Skillet Studios
+
+
 package com.massivecraft.creativegates.event;
 
 import java.util.Set;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.massivecraft.creativegates.Gate;
 
 @SuppressWarnings("serial")
-public class CreativeGatesTeleportEvent extends Event implements Cancellable
+public class CreativeGatesTeleportEvent extends Event
 {
+	
+	// Required code for handler
+	
+	private static final HandlerList handlers = new HandlerList();
+	 
+	public HandlerList getHandlers() {
+	    return handlers;
+	}
+	 
+	public static HandlerList getHandlerList() {
+	    return handlers;
+	}
+
+	
+	//	Original Code below
+	
 	// FIELD: cancelled
 	private boolean cancelled;
 	public boolean isCancelled() { return this.cancelled; }
@@ -44,7 +64,7 @@ public class CreativeGatesTeleportEvent extends Event implements Cancellable
     
     public CreativeGatesTeleportEvent(PlayerMoveEvent event, Location location, Set<Material> materials, Gate gateFrom, Gate gateTo)
     {
-        super("CreativeGatesTeleportEvent");
+        //super("CreativeGatesTeleportEvent");   ---   Removed by Skillet Studios
         this.event = event;
         this.location = location;
         this.materials = materials;
@@ -52,7 +72,6 @@ public class CreativeGatesTeleportEvent extends Event implements Cancellable
         this.setGateFrom(gateFrom);
         this.setGateTo(gateTo);
     }
-	
     
     
     

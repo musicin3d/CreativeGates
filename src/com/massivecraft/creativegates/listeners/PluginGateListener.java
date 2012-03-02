@@ -1,20 +1,20 @@
 package com.massivecraft.creativegates.listeners;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
 import com.massivecraft.creativegates.Conf;
 import com.massivecraft.creativegates.CreativeGates;
 import com.massivecraft.creativegates.Gate;
-import com.massivecraft.creativegates.event.CreativeGatesListener;
 import com.massivecraft.creativegates.event.CreativeGatesTeleportEvent;
 
-public class PluginGateListener extends CreativeGatesListener
+public class PluginGateListener implements Listener
 {
 	
 	CreativeGates p = CreativeGates.p;
     
-    @Override
+	@EventHandler
     public void onPlayerGateTeleport(CreativeGatesTeleportEvent event)
     {
         if(event.isCancelled()) return;

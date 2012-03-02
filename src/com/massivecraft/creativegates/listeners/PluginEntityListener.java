@@ -1,18 +1,19 @@
 package com.massivecraft.creativegates.listeners;
 
 import org.bukkit.block.Block;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntityListener;
 
 import com.massivecraft.creativegates.CreativeGates;
 import com.massivecraft.creativegates.Gates;
 
-public class PluginEntityListener extends EntityListener {
+public class PluginEntityListener implements Listener {
 	
 	CreativeGates p = CreativeGates.p;
 	
 	// Gates can not be destroyed by explosions
-	@Override
+	@EventHandler
 	public void onEntityExplode(EntityExplodeEvent event)
 	{
 		if (event.isCancelled()) return;
